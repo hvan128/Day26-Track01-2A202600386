@@ -19,7 +19,7 @@ nop-cuoi: Có — file cuối Lab 3 (cá nhân)
 - **Mã học viên**: 2A202600386
 - **Họ tên**: Ngô Hải Văn
 - **Ngày**: 2026-05-14
-- **Nhóm Lab 2 của tôi**: Cursor vs GitHub Copilot trong ngành **B — Lập trình**
+- **Nhóm Lab 2 của tôi**: Google Antigravity vs GitHub Copilot trong ngành **B — Lập trình**
 
 ---
 
@@ -37,7 +37,7 @@ nop-cuoi: Có — file cuối Lab 3 (cá nhân)
 ### Quan sát 1 — Nhóm AX (Perplexity vs ChatGPT Search) — "Source-grounded UX khác Source-cited UX"
 
 - **Cụ thể họ đưa ra**: Nhóm AX phân biệt rõ Perplexity là **source-grounded** (mỗi câu trong câu trả lời gắn số [1][2][3] dẫn ngược về footnote) còn ChatGPT Search là **source-cited** (footnote ở cuối toàn bộ answer, không gắn từng câu). Sự khác biệt UX này ảnh hưởng trực tiếp đến **Trust Signal** Lens 3 — Perplexity dễ verify hơn nên trust cao hơn cho task fact-checking.
-- **Vì sao tôi thấy hay**: Nhóm tôi (Cursor vs Copilot) cũng có vấn đề "trust signal" tương tự nhưng tôi chỉ tích vào checklist (✓/✗) — chưa phân tích sâu **UX cụ thể nào** tạo trust. Nhóm AX cho tôi thấy: trust không phải "có/không citation" mà là **granularity của citation** (per-sentence vs per-answer).
+- **Vì sao tôi thấy hay**: Nhóm tôi (Antigravity vs Copilot) cũng có vấn đề "trust signal" tương tự nhưng tôi chỉ tích vào checklist (✓/✗) — chưa phân tích sâu **UX cụ thể nào** tạo trust. Nhóm AX cho tôi thấy: trust không phải "có/không citation" mà là **granularity của citation** (per-sentence vs per-answer). Áp dụng cho Lab 2 của tôi: artifact trail của Antigravity (task list + screenshot agent run) tạo trust per-step rất giống granularity per-sentence của Perplexity.
 
 ### Quan sát 2 — Nhóm DY (NotebookLM vs Elicit) — "Niche xuống còn 1 use case duy nhất là cách Elicit sống"
 
@@ -46,8 +46,8 @@ nop-cuoi: Có — file cuối Lab 3 (cá nhân)
 
 ### Quan sát 3 — Nhóm AX — "Pricing ngang nhau không có nghĩa value ngang nhau"
 
-- **Cụ thể họ đưa ra**: Perplexity Pro $20 = ChatGPT Plus $20 nhưng họ chỉ ra ChatGPT Plus bao gồm cả image gen + voice + code interpreter, còn Perplexity Pro chỉ có search → **same price, different value bundle**. Đây là điểm S4 (Business Signal) mà nhóm tôi đã bỏ qua trong Cursor vs Copilot ($20 vs $10).
-- **Vì sao tôi thấy hay**: Tôi mới so giá raw, chưa so **value bundle**. Cursor $20 chỉ có code; Copilot $10 chỉ có code. Nhưng nếu so Cursor Ultra $200 với Claude Max $200 — Claude Max có cả CLI + Computer Use + research, còn Cursor Ultra chỉ có IDE. **Per-dollar value mới là chỉ số đúng.**
+- **Cụ thể họ đưa ra**: Perplexity Pro $20 = ChatGPT Plus $20 nhưng họ chỉ ra ChatGPT Plus bao gồm cả image gen + voice + code interpreter, còn Perplexity Pro chỉ có search → **same price, different value bundle**. Đây là điểm S4 (Business Signal) mà nhóm tôi đã bỏ qua khi so Antigravity FREE vs Copilot $10.
+- **Vì sao tôi thấy hay**: Tôi mới so giá raw (Antigravity $0 vs Copilot $10), chưa so **value bundle**. Antigravity $0 đi kèm Claude Opus 4.6 + Gemini 3 (vốn $39 trong Copilot Pro+) → per-dollar value của Antigravity gấp 5-10× Copilot khi xét model frontier. **Per-dollar value mới là chỉ số đúng.**
 
 ---
 
@@ -104,12 +104,12 @@ nop-cuoi: Có — file cuối Lab 3 (cá nhân)
 
 ### Bài học 2 — "Verdict phải chia theo persona, không phải theo product"
 
-- **Tôi sẽ làm khác lần sau**: Khi viết S5.1 Verdict, thay vì "Cursor STRONG, Copilot STRONG" (chỉ 1 chiều), tôi sẽ làm bảng **persona × product**: với persona "solo dev/startup" → Cursor STRONG / Copilot PROMISING; với persona "team Enterprise" → ngược lại. Verdict chỉ có giá trị khi gắn với persona cụ thể.
+- **Tôi sẽ làm khác lần sau**: Khi viết S5.1 Verdict, thay vì "Antigravity PROMISING, Copilot STRONG" (chỉ 1 chiều), tôi đã (trong slide deck) làm bảng **persona × product**: sinh viên → Antigravity STRONG (Claude Opus free); team Enterprise → Antigravity WEAK (chưa có tier). Verdict chỉ có giá trị khi gắn với persona cụ thể.
 - **Lý do**: Quan sát từ Nhóm DY và lỗi né kết luận của họ — verdict 1-chiều luôn bị fail rubric hoặc phải né. Verdict theo persona vừa chính xác vừa thực dụng.
 
 ### Bài học 3 — "Per-dollar value, không phải raw price"
 
-- **Tôi sẽ làm khác lần sau**: Trong S4 Business Signal, ngoài bảng raw price ($20 vs $10), tôi sẽ thêm cột **"included features per $10"** — giúp người xem hiểu chênh lệch giá thực sự có nghĩa gì. Ví dụ Cursor $20 = $5/feature-block (Composer + Tab + Chat + Index); Copilot $10 = $3.3/feature-block (Autocomplete + Chat + Agent).
+- **Tôi sẽ làm khác lần sau**: Trong S4 Business Signal, ngoài bảng raw price ($0 vs $10), tôi sẽ thêm cột **"model frontier included"** — giúp người xem hiểu chênh lệch giá thực sự có nghĩa gì. Ví dụ Antigravity FREE bao gồm Claude Opus 4.6 ($39 nếu mua qua Copilot Pro+), Gemini 3.1 Pro ($20 nếu mua qua Google AI Pro). Copilot $10 chỉ có GPT-4o; muốn frontier phải lên $39.
 - **Lý do**: Quan sát từ Nhóm AX và bài Perplexity vs ChatGPT $20 = $20 raw — value bundle khác nhau. Đây là số liệu dễ tính mà rất hữu ích cho người xem.
 
 ### Bài học 4 — "Liên hệ Lab 1 phải dùng framework cụ thể"

@@ -19,7 +19,7 @@ Xem [`worksheet/02-product-comparison/group-members.md`](./worksheet/02-product-
 1. **Ngô Hải Văn** — 2A202600386
 2. **Nguyễn Tiến Dũng** — 2A202600219
 
-**Ngành**: B — Lập trình • **Sản phẩm so sánh**: Cursor vs GitHub Copilot
+**Ngành**: B — Lập trình • **Sản phẩm so sánh**: Google Antigravity vs GitHub Copilot
 
 ## Tóm tắt Lab 1
 

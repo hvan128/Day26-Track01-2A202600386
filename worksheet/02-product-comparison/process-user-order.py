@@ -1,7 +1,7 @@
 """
-Test target cho Lab 2 — Cursor vs GitHub Copilot.
+Test target cho Lab 2 — Google Antigravity vs GitHub Copilot.
 
-Cả Hải Văn (Cursor) và Dũng (Copilot) paste TOÀN BỘ file này vào prompt,
+Cả Hải Văn (Antigravity) và Dũng (Copilot) paste TOÀN BỘ file này vào prompt,
 yêu cầu AI refactor thành 3 function:
   1) validate_order_input(user_data, items)
   2) calculate_total_with_tax(items, country, is_premium)
