@@ -60,7 +60,7 @@ Mỗi người chụp ≥ 3 ảnh bắt buộc + 3 ảnh khuyến khích, đặt
 
 ## Ghi chú
 
-- Mỗi thành viên copy folder `02-product-comparison/` (đã hoàn thiện) vào repo cá nhân của mình (`Day26-2A202600386` và `Day26-2A202600219`).
+- Mỗi thành viên copy folder `02-product-comparison/` (đã hoàn thiện) vào repo cá nhân của mình (`Day26-Track01-2A202600386` và `Day26-Track01-2A202600219`).
 - Slide deck `analysis-report.pdf` và `analysis-report-link.md` là sản phẩm chung — 2 thành viên cùng tên trong credits.
 - File `group-members.md` này phải giống nhau ở cả 2 repo cá nhân.
 
