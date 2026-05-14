@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Cursor vs GitHub Copilot — Day 26 Lab 2</title>
+<style>
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; }
+  body { margin: 0; font-family: -apple-system, "Segoe UI", "Helvetica Neue", Inter, system-ui, sans-serif; color: #1a1a1a; background: #fff; }
+  .slide { width: 1280px; height: 720px; padding: 56px 72px; page-break-after: always; position: relative; border-bottom: 1px solid #eee; overflow: hidden; }
+  .slide:last-child { page-break-after: auto; }
+  h1 { font-size: 44px; margin: 0 0 8px 0; color: #0b3d91; letter-spacing: -0.5px; }
+  h2 { font-size: 32px; margin: 0 0 20px 0; color: #0b3d91; letter-spacing: -0.3px; }
+  h3 { font-size: 20px; margin: 18px 0 8px 0; color: #222; }
+  .subtitle { font-size: 22px; color: #555; margin-bottom: 30px; }
+  ul { padding-left: 24px; margin: 8px 0; font-size: 17px; line-height: 1.55; }
+  li { margin-bottom: 6px; }
+  .credits { position: absolute; bottom: 36px; left: 72px; right: 72px; font-size: 14px; color: #888; display: flex; justify-content: space-between; }
+  table { border-collapse: collapse; width: 100%; font-size: 14px; margin: 8px 0; }
+  th, td { border: 1px solid #d0d7de; padding: 6px 10px; text-align: left; vertical-align: top; }
+  th { background: #f3f6fb; color: #0b3d91; font-weight: 600; }
+  .placeholder-image { background: repeating-linear-gradient(45deg, #f4f4f4, #f4f4f4 8px, #ececec 8px, #ececec 16px); border: 2px dashed #c0c0c0; color: #888; padding: 16px; text-align: center; font-size: 13px; border-radius: 6px; margin: 8px 0; }
+  .row { display: flex; gap: 16px; }
+  .col { flex: 1; }
+  .badge { display: inline-block; padding: 2px 8px; border-radius: 4px; font-size: 12px; font-weight: 600; }
+  .b-strong { background: #d1f0d8; color: #0a6e29; }
+  .b-warn { background: #fff1c2; color: #8c5a00; }
+  .b-risk { background: #fcd6d6; color: #8a1212; }
+  .footer-num { position: absolute; bottom: 36px; right: 72px; font-size: 13px; color: #aaa; }
+  .tagline { font-size: 16px; color: #444; line-height: 1.5; }
+  .accent { color: #0b3d91; font-weight: 600; }
+  .small { font-size: 13px; color: #555; }
+  p { margin: 6px 0; font-size: 16px; line-height: 1.5; }
+  .two-col-bullets { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+  .two-col-bullets .box { border: 1px solid #e2e8f0; border-radius: 8px; padding: 12px 16px; background: #fafbfc; }
+  .two-col-bullets .box h3 { margin-top: 0; color: #0b3d91; }
+</style>
+</head>
+<body>
+
+<!-- Slide 0 — Title -->
+<div class="slide">
+  <h1>Cursor vs GitHub Copilot</h1>
+  <div class="subtitle">AI Coding Assistant Showdown — Day 26 Lab 2</div>
+  <p class="tagline">So sánh 2 AI coding assistant cho task <span class="accent">refactor function Python + viết unit test</span>.</p>
+  <h3>Nhóm</h3>
+  <ul>
+    <li><strong>Ngô Hải Văn</strong> — 2A202600386</li>
+    <li><strong>Nguyễn Tiến Dũng</strong> — 2A202600219</li>
+  </ul>
+  <div class="credits">
+    <span>Day 26 • AI Product Strategy</span>
+    <span>2026-05-14</span>
+  </div>
+</div>
+
+<!-- Slide 1 — S1 Product Moment -->
+<div class="slide">
+  <h2>S1 — Product Moment</h2>
+  <p class="tagline">Cùng 1 task, 2 trợ thủ AI. Ngành: <span class="accent">Lập trình (AI coding assistant)</span>.</p>
+  <h3>Nhiệm vụ chung</h3>
+  <p>Refactor function Python <code>process_user_order</code> (~50 dòng) → 3 function nhỏ hơn + 1 pytest unit test/function.</p>
+  <div class="two-col-bullets">
+    <div class="box">
+      <h3>Sản phẩm A — Cursor</h3>
+      <ul>
+        <li>IDE fork của VS Code, Anysphere</li>
+        <li>Pro $20/tháng</li>
+        <li>Entry: tải IDE → mở project → Cmd+L (chat) / Cmd+K (inline edit) / Composer</li>
+      </ul>
+      <div class="placeholder-image">[ẢNH: product-A-1-entry.png — Cursor IDE màn hình đầu]</div>
+    </div>
+    <div class="box">
+      <h3>Sản phẩm B — GitHub Copilot</h3>
+      <ul>
+        <li>Extension trong VS Code, Microsoft/GitHub</li>
+        <li>Pro $10/tháng (free cho student)</li>
+        <li>Entry: cài extension → ghost text autocomplete + Chat panel (Cmd+I)</li>
+      </ul>
+      <div class="placeholder-image">[ẢNH: product-B-1-entry.png — VS Code + Copilot active]</div>
+    </div>
+  </div>
+  <div class="footer-num">1 / 14</div>
+</div>
+
+<!-- Slide 2 — S2 Workflow Evidence -->
+<div class="slide">
+  <h2>S2 — Workflow Evidence</h2>
+  <p class="tagline">Trước / Trong / Sau khi prompt — đo 3 friction areas.</p>
+  <table>
+    <tr><th>Bước</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td><strong>Trước</strong></td><td>Chọn file, Cmd+L mở Composer</td><td>Chọn function, Cmd+I mở inline chat</td></tr>
+    <tr><td><strong>Trong</strong></td><td>Composer nhận diện cả file, đề xuất diff cho 3 function MỚI + 1 pytest file, preview multi-file diff</td><td>Trả từng function trong chat, user copy-paste vào file (hoặc "Insert into Editor")</td></tr>
+    <tr><td><strong>Sau</strong></td><td>Apply All → 2 file mới (orders.py, test_orders.py) tự tạo</td><td>Phải tạo file test_orders.py thủ công, paste code</td></tr>
+  </table>
+  <h3>3 friction areas đo được</h3>
+  <ul>
+    <li><strong>Multi-file editing</strong>: Cursor 1 click — Copilot 3+ thao tác thủ công</li>
+    <li><strong>Codebase awareness</strong>: Cursor index toàn project — Copilot chỉ thấy file đang mở</li>
+    <li><strong>Test scaffolding</strong>: Cursor tạo file test riêng — Copilot trả test trong chung 1 block</li>
+  </ul>
+  <div class="row">
+    <div class="col placeholder-image">[ẢNH: product-A-2-input.png + product-A-3-output.png]</div>
+    <div class="col placeholder-image">[ẢNH: product-B-2-input.png + product-B-3-output.png]</div>
+  </div>
+  <div class="footer-num">2 / 14</div>
+</div>
+
+<!-- Slide 3 — S3 Output & Trust -->
+<div class="slide">
+  <h2>S3 — Output & Trust</h2>
+  <p class="tagline">Chất lượng code + 6 dấu hiệu đáng tin.</p>
+  <table>
+    <tr><th>Tiêu chí</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td>Code chạy ngay không sửa</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Type hints đầy đủ</td><td>✓</td><td>Một phần (thiếu return type)</td></tr>
+    <tr><td>Docstring đúng PEP 257</td><td>✓</td><td>✓</td></tr>
+    <tr><td>Pytest coverage edge cases</td><td>3 case/function</td><td>2 case/function</td></tr>
+    <tr><td>Tách concerns rõ ràng</td><td>✓✓ (clean)</td><td>✓ (còn coupling nhẹ)</td></tr>
+  </table>
+  <h3>6 Trust signals</h3>
+  <ul>
+    <li><strong>Cite context</strong>: Cursor cite file gốc — Copilot không cite</li>
+    <li><strong>Diff preview trước apply</strong>: Cursor có — Copilot phải xem trong chat</li>
+    <li><strong>Undo / revert</strong>: Cả 2 hỗ trợ qua Git</li>
+    <li><strong>Model transparency</strong>: Cursor hiển thị model (Claude Opus/GPT-5.4/Gemini 3) — Copilot mặc định ẩn</li>
+    <li><strong>Citation về training data</strong>: Cả 2 không công khai</li>
+    <li><strong>Risk</strong>: Copilot có vụ kiện copyleft (Doe vs GitHub 2022) còn pending</li>
+  </ul>
+  <div class="footer-num">3 / 14</div>
+</div>
+
+<!-- Slide 4 — S4 Business Signal -->
+<div class="slide">
+  <h2>S4 — Business Signal</h2>
+  <p class="tagline">Giá, giới hạn, Cost-Capability-Speed.</p>
+  <table>
+    <tr><th>Plan</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td>Free</td><td>14-day Pro trial, sau Hobby</td><td>50 chat + 2000 autocomplete/tháng</td></tr>
+    <tr><td>Pro cá nhân</td><td><strong>$20/tháng</strong> (gồm $20 frontier-model credit)</td><td><strong>$10/tháng</strong></td></tr>
+    <tr><td>Business / Pro+</td><td>$40/th (Business)</td><td>$19/th (Business), $39/th (Pro+)</td></tr>
+    <tr><td>Ultra / Enterprise</td><td>$200/th (Ultra)</td><td>$39/th (Enterprise)</td></tr>
+    <tr><td>Student</td><td>—</td><td><strong>Free</strong> (GitHub Student verified)</td></tr>
+  </table>
+  <h3>Cost-Capability-Speed</h3>
+  <ul>
+    <li><strong>Cost</strong>: Cursor $20 (2× Copilot) — Copilot $10, free cho student</li>
+    <li><strong>Capability</strong>: Cursor mạnh hơn (Composer multi-file, codebase index, multi-model switching) — Copilot trung bình (agent mode mới, chỉ thấy open files trừ Enterprise)</li>
+    <li><strong>Speed</strong>: Cursor chậm hơn ở Composer (10–30s/diff) — Copilot nhanh hơn ở autocomplete (instant)</li>
+  </ul>
+  <div class="row">
+    <div class="col placeholder-image">[ẢNH: product-A-5-pricing.png]</div>
+    <div class="col placeholder-image">[ẢNH: product-B-5-pricing.png]</div>
+  </div>
+  <div class="footer-num">4 / 14</div>
+</div>
+
+<!-- Slide 5 — S5.1 Verdict -->
+<div class="slide">
+  <h2>S5.1 — Verdict</h2>
+  <table>
+    <tr><th>Sản phẩm</th><th>Verdict</th><th>Lý do</th></tr>
+    <tr><td><strong>Cursor</strong></td><td><span class="badge b-strong">STRONG</span></td><td>$2B ARR trong 3 năm, Composer multi-file, multi-model switching — PMF rõ cho serious dev</td></tr>
+    <tr><td><strong>GitHub Copilot</strong></td><td><span class="badge b-strong">STRONG</span></td><td>20M users, 4.7M paid, Fortune 100 ~90%, distribution moat từ GitHub — khó thay thế ở Enterprise</td></tr>
+  </table>
+  <h3>Cả 2 đều STRONG, nhưng ở 2 phân khúc khác nhau</h3>
+  <ul>
+    <li><strong>Cursor</strong>: power user / startup / individual dev muốn cutting edge</li>
+    <li><strong>Copilot</strong>: enterprise / team đã dùng GitHub workflow + sinh viên (free)</li>
+  </ul>
+  <div class="footer-num">5 / 14</div>
+</div>
+
+<!-- Slide 6 — S5.2 User base + Growth -->
+<div class="slide">
+  <h2>S5.2 — User base + Tăng trưởng</h2>
+  <p class="tagline">Cả 2 cùng "băng băng" — nhưng đường khác nhau.</p>
+  <div class="two-col-bullets">
+    <div class="box">
+      <h3>Cursor</h3>
+      <ul>
+        <li><strong>DAU</strong>: &gt; 1 triệu (đầu 2025)</li>
+        <li><strong>ARR timeline</strong>: $100M (1/2025) → $500M (6/2025) → $1B (cuối 2025) → <strong>$2B (2/2026)</strong></li>
+        <li><strong>Tốc độ</strong>: nhanh nhất lịch sử B2B SaaS — 0 → $2B trong ~3 năm</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>GitHub Copilot</h3>
+      <ul>
+        <li><strong>Total users</strong>: 20M+ (7/2025)</li>
+        <li><strong>Paid subs</strong>: 1.8M (FY2024) → <strong>4.7M (1/2026)</strong> — +160% trong ~18 tháng</li>
+        <li><strong>Enterprise</strong>: ~77K customers; 75% QoQ growth Q2 2025</li>
+        <li><strong>Revenue</strong>: GitHub overall +40% YoY chủ yếu nhờ Copilot</li>
+      </ul>
+    </div>
+  </div>
+  <p class="small">Nguồn: TechCrunch (Cursor $9.9B valuation 6/2025) • TheNextWeb (Cursor $50B funding talks) • TechCrunch (GitHub Copilot 20M users 7/2025) • CIO Dive (Copilot subscriber growth).</p>
+  <div class="footer-num">6 / 14</div>
+</div>
+
+<!-- Slide 7 — S5.3 Pricing Power -->
+<div class="slide">
+  <h2>S5.3 — Doanh thu / Pricing Power</h2>
+  <table>
+    <tr><th>Chỉ số</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td>ARR công khai gần nhất</td><td><strong>$2B (2/2026)</strong></td><td>Không tách (ước tính ~$1–1.5B)</td></tr>
+    <tr><td>Pricing cá nhân</td><td>$20/tháng</td><td>$10/tháng</td></tr>
+    <tr><td>ARPU ước tính</td><td>~$240/năm</td><td>~$120–180/năm</td></tr>
+    <tr><td>Valuation</td><td>$29.3B (11/2025) → đang gọi $50B</td><td>MSFT cap &gt;$3T (không tách riêng)</td></tr>
+    <tr><td>Funding model</td><td>VC (a16z, Thrive, Nvidia, Google)</td><td>Internal (Microsoft)</td></tr>
+  </table>
+  <h3>Pricing power</h3>
+  <ul>
+    <li><strong>Cursor cao</strong> — giá gấp 2× Copilot mà vẫn tăng trưởng kỷ lục → user trả vì capability vượt trội</li>
+    <li><strong>Copilot trung bình</strong> — phải dựa freemium (student free, 50 msg free) + distribution của GitHub</li>
+  </ul>
+  <div class="footer-num">7 / 14</div>
+</div>
+
+<!-- Slide 8 — S5.4 Moat -->
+<div class="slide">
+  <h2>S5.4 — Moat phân tích (5 loại)</h2>
+  <table>
+    <tr><th>Loại moat</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td>Data moat</td><td>Yếu — không sở hữu LLM gốc, dùng GPT/Claude/Gemini qua API</td><td>Trung bình — train trên 1B+ public GitHub repos</td></tr>
+    <tr><td>Network effect</td><td>Yếu (cá nhân user)</td><td><strong>Mạnh</strong> — GitHub social graph (PR, issue, follow)</td></tr>
+    <tr><td>Switching cost</td><td>Trung bình — index project + shortcuts</td><td>Trung bình — dependency VS Code</td></tr>
+    <tr><td>Brand</td><td><strong>Mạnh</strong> trong tech twitter / HN</td><td><strong>Mạnh</strong> — Microsoft + GitHub trust</td></tr>
+    <tr><td>Distribution</td><td>Yếu — phải tự download IDE</td><td><strong>Cực mạnh</strong> — GitHub Education free cho student, VS Code default, Enterprise default</td></tr>
+  </table>
+  <h3>Moat chủ đạo & Rủi ro</h3>
+  <ul>
+    <li><strong>Cursor</strong>: Brand + UX feature (Composer) — moat "feature lead". <span class="badge b-risk">Rủi ro</span> "rented land" trên VS Code (Microsoft) + OpenAI/Anthropic API</li>
+    <li><strong>Copilot</strong>: Distribution (GitHub + VS Code + MSFT Enterprise) — moat "platform". Phụ thuộc MSFT commit</li>
+  </ul>
+  <div class="footer-num">8 / 14</div>
+</div>
+
+<!-- Slide 9 — S5.5 Data Flywheel -->
+<div class="slide">
+  <h2>S5.5 — Data Flywheel + Feedback Loop</h2>
+  <div class="two-col-bullets">
+    <div class="box">
+      <h3>Cursor</h3>
+      <ul>
+        <li><strong>User feed lại</strong>: Cmd+K accept/reject, Composer apply/reject, Tab accept rate, chat thumbs</li>
+        <li><strong>Compounding</strong>: Cursor 2.0 train <strong>proprietary Composer model</strong> trên dữ liệu accept/reject từ ~1M DAU → chuyển từ "rented" sang "own model"</li>
+        <li><strong>Systematic feedback</strong>: ✓ (Tab accept rate là metric chính)</li>
+        <li><strong>Big tech tấn công</strong>: Microsoft clone Composer trong Copilot Pro+; OpenAI Codex cạnh tranh trực tiếp</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>GitHub Copilot</h3>
+      <ul>
+        <li><strong>User feed lại</strong>: accept/reject suggestion, thumbs up/down chat</li>
+        <li><strong>Compounding</strong>: scale data lớn nhất (1B+ repos public) nhưng loop <em>tách rời</em> — feedback vào Azure ML, không vào user UX trực tiếp</li>
+        <li><strong>Systematic feedback</strong>: Có nhưng chậm — release model mới qua IDE update</li>
+        <li><strong>Big tech tấn công?</strong>: Bản thân là big tech — đối tượng tấn công Cursor</li>
+      </ul>
+    </div>
+  </div>
+  <p class="tagline"><strong>Kết luận:</strong> Cursor xây flywheel nhanh hơn (proprietary model 2025-2026); Copilot có data scale lớn hơn nhưng loop chậm hơn.</p>
+  <div class="footer-num">9 / 14</div>
+</div>
+
+<!-- Slide 10 — S5.6 Niche + AI Feature Map -->
+<div class="slide">
+  <h2>S5.6 — Niche Down + AI Feature Map</h2>
+  <h3>Niche</h3>
+  <ul>
+    <li><strong>Cursor</strong>: Solo dev / startup / power user — "AI editor multi-file native, model switching, agent mode mạnh" (hẹp hơn)</li>
+    <li><strong>Copilot</strong>: Mass market + Enterprise teams — "AI ngay trong VS Code bạn đã dùng, free cho student" (rộng hơn)</li>
+  </ul>
+  <h3>AI Feature Map (3 trục)</h3>
+  <table>
+    <tr><th>Trục</th><th>Cursor</th><th>Copilot</th></tr>
+    <tr><td><strong>User Value</strong> — task nhanh hơn?</td><td><strong>Cao</strong> — multi-file refactor giảm 50%+ thời gian</td><td>Trung bình — autocomplete giảm ~20-30% gõ</td></tr>
+    <tr><td><strong>User Alignment</strong> — AI làm đúng ý?</td><td>Cao — Composer hỏi rõ trước khi apply</td><td>Trung bình — autocomplete đôi khi sai context</td></tr>
+    <tr><td><strong>Business Value</strong> — drive doanh thu?</td><td><strong>Cao</strong> — Composer là lý do trả $20 thay vì $10</td><td>Cao — agent mode đang drive 1.8M → 4.7M paid sub</td></tr>
+  </table>
+  <div class="footer-num">10 / 14</div>
+</div>
+
+<!-- Slide 11 — S5.7 Spark Loop System -->
+<div class="slide">
+  <h2>S5.7 — Spark → Loop → System</h2>
+  <div class="two-col-bullets">
+    <div class="box">
+      <h3>Cursor</h3>
+      <ul>
+        <li><strong>Spark</strong> ✓ Cmd+K "edit by description" (2022-2023)</li>
+        <li><strong>Loop</strong> ✓ Composer + Chat + Tab + Apply diff hằng ngày</li>
+        <li><strong>System</strong> ✓ (đang xây) Cursor 2.0 multi-agent + proprietary Composer model + Background agents</li>
+        <li><strong>12 tháng</strong>: chuyển sang full agent system, giảm phụ thuộc API; có thể IPO 2026-2027 sau Series E $50B</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>GitHub Copilot</h3>
+      <ul>
+        <li><strong>Spark</strong> ✓ Ghost text autocomplete (2021) — spark đầu tiên của ngành</li>
+        <li><strong>Loop</strong> ✓ Autocomplete + Chat + PR review trong workflow GitHub</li>
+        <li><strong>System</strong> ✓ Agent Mode + Copilot Workspace + Copilot Pages → "OS for dev"</li>
+        <li><strong>12 tháng</strong>: đẩy mạnh trong Azure DevOps + ép vào Enterprise; tăng paid sub lên 8-10M</li>
+      </ul>
+    </div>
+  </div>
+  <p class="tagline"><strong>Kết luận:</strong> Cả 2 đều ở giai đoạn System — Cursor xây từ feature signature, Copilot xây từ platform integration.</p>
+  <div class="footer-num">11 / 14</div>
+</div>
+
+<!-- Slide 12 — S5.8 Liên hệ Lab 1 (Chegg) -->
+<div class="slide">
+  <h2>S5.8 — Liên hệ Lab 1 (Chegg)</h2>
+  <p class="tagline">Cursor / Copilot có rủi ro "Chegg moment" không?</p>
+  <p><strong>Bài học Lab 1:</strong> Chegg sụp 99% trong 4 năm vì (i) niche quá rộng, (ii) moat "rented land" trên Google, (iii) phản ứng chậm 5 tháng.</p>
+  <h3>Áp dụng vào Cursor</h3>
+  <ul>
+    <li>Niche: <strong>hẹp hơn Chegg</strong> (power user dev) — rủi ro thấp hơn</li>
+    <li>Moat "rented land": <span class="badge b-warn">CÓ</span> — fork VS Code (Microsoft kiểm soát), dùng OpenAI/Anthropic API</li>
+    <li>Phản ứng: <strong>Cursor 2.0 train proprietary Composer</strong> → đang escape rented land trước khi big tech khoá</li>
+    <li><strong>Verdict rủi ro</strong>: <span class="badge b-warn">Trung bình</span> — Microsoft / OpenAI có thể ép, nhưng Cursor chủ động xây own model</li>
+  </ul>
+  <h3>Áp dụng vào Copilot</h3>
+  <ul>
+    <li>Niche rộng (giống Chegg) nhưng moat tự sở hữu (MSFT owns GitHub + VS Code + Azure)</li>
+    <li><strong>Verdict rủi ro</strong>: <span class="badge b-strong">Thấp</span> — bản thân là big tech, không phải nạn nhân</li>
+    <li>Rủi ro khác: Cursor + Claude Code + OpenAI Codex CLI ăn từ phân khúc cao xuống (giống ChatGPT ăn Chegg)</li>
+  </ul>
+  <div class="footer-num">12 / 14</div>
+</div>
+
+<!-- Slide 13 — Recommendation -->
+<div class="slide">
+  <h2>Final Take — Khi nào chọn cái gì?</h2>
+  <table>
+    <tr><th>Persona</th><th>Chọn</th><th>Lý do</th></tr>
+    <tr><td>Sinh viên / dev mới học</td><td><strong>Copilot</strong></td><td>Free cho student, $10/tháng, đủ dùng</td></tr>
+    <tr><td>Solo dev / startup</td><td><strong>Cursor</strong></td><td>Multi-file Composer, model switching</td></tr>
+    <tr><td>Team Enterprise dùng GitHub</td><td><strong>Copilot Business/Enterprise</strong></td><td>Security + admin + SOC2</td></tr>
+    <tr><td>Power user / vibe coding</td><td><strong>Cursor Ultra</strong> hoặc Claude Code CLI</td><td>$200/th unlimited frontier model</td></tr>
+  </table>
+  <h3>Câu hỏi mở</h3>
+  <ul>
+    <li>Nếu Microsoft ép Cursor không fork VS Code nữa, Cursor sống được không?</li>
+    <li>Anthropic Claude Code (CLI) — có phải "Chegg killer" cho cả Cursor lẫn Copilot trong 12 tháng tới?</li>
+  </ul>
+  <div class="footer-num">13 / 14</div>
+</div>
+
+<!-- Slide 14 — Credits + Sources -->
+<div class="slide">
+  <h2>Credits + Sources</h2>
+  <h3>Credits</h3>
+  <ul>
+    <li>Ngô Hải Văn — 2A202600386</li>
+    <li>Nguyễn Tiến Dũng — 2A202600219</li>
+    <li>Day 26 • AI Product Strategy • 2026-05-14</li>
+  </ul>
+  <h3>Sources</h3>
+  <ul class="small">
+    <li>TechCrunch — Cursor $9.9B valuation: techcrunch.com/2025/06/05/cursors-anysphere-nabs-9-9b-valuation-soars-past-500m-arr/</li>
+    <li>TheNextWeb — Cursor $50B funding talks: thenextweb.com/news/cursor-anysphere-2-billion-funding-50-billion-valuation-ai-coding</li>
+    <li>TechCrunch — GitHub Copilot 20M users: techcrunch.com/2025/07/30/github-copilot-crosses-20-million-all-time-users/</li>
+    <li>CIO Dive — GitHub Copilot subscriber growth: ciodive.com/news/github-copilot-subscriber-count-revenue-growth/706201/</li>
+    <li>Skywork — Cursor 2.0 vs Copilot comparison (2025): skywork.ai/blog/cursor-2-0-vs-github-copilot-2025-comparison/</li>
+    <li>DataCamp — Cursor vs Copilot review: datacamp.com/blog/cursor-vs-github-copilot</li>
+  </ul>
+  <div class="footer-num">14 / 14</div>
+</div>
+
+</body>
+</html>

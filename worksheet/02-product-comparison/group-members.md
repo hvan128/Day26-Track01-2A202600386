@@ -7,59 +7,76 @@ nop-cuoi: Có — bắt buộc (nộp kèm analysis-report.pdf)
 
 # Thành viên nhóm Lab 2
 
-Lab 2 làm theo nhóm 2 học viên. Mỗi học viên có 1 repo riêng (`Day26-MãHọcViên`), nhưng nội dung Lab 2 (slide deck + screenshots + research notes) là sản phẩm chung — mỗi học viên copy bản chung về repo cá nhân của mình.
-
-File này khai báo 2 thành viên trong nhóm + phân công thực hiện.
-
 ---
 
 ## Danh sách thành viên
 
 | # | Mã học viên | Họ tên đầy đủ | Phân công chính |
 |---|---|---|---|
-| 1 | A20-XXXXX | [...] | [...] |
-| 2 | A20-XXXXX | [...] | [...] |
+| 1 | 2A202600386 | Ngô Hải Văn | Test + screenshot **GitHub Copilot**; viết S2 Workflow + S5.4 Moat + S5.5 Data flywheel |
+| 2 | 2A202600219 | Nguyễn Tiến Dũng | Test + screenshot **Cursor**; viết S3 Output & Trust + S5.6 Niche + AI Feature Map + S5.7 Spark→Loop→System |
+
+Phân công chung (cả 2): chốt nhiệm vụ + prompt, dựng S1 Product Moment, S4 Business Signal, S5.1 Verdict, S5.2/S5.3 số liệu, S5.8 Liên hệ Lab 1.
 
 ---
 
 ## Nhiệm vụ thử nghiệm chung
 
-[Mô tả 1-2 câu nhiệm vụ chung mà cả 2 thành viên cùng test trên 2 sản phẩm. Ví dụ: "Viết bản tóm tắt 200 từ về tác động của AI lên ngành ed-tech, có dẫn nguồn."]
+**Nhiệm vụ**: Refactor 1 function Python dài (~50 dòng) thành 3 function nhỏ hơn, dễ test, kèm 1 unit test cho mỗi function.
 
-**Ngành chọn**: [A — Tìm kiếm / B — Lập trình / C — Viết lách / D — Nghiên cứu]
+**Prompt chính xác** (nhập y hệt vào cả 2 sản phẩm):
 
-**Sản phẩm A**: [tên + URL]
+```
+Refactor function `process_user_order` dưới đây thành 3 function nhỏ hơn:
+1) validate_order_input(...)
+2) calculate_total_with_tax(...)
+3) save_order_to_db(...)
 
-**Sản phẩm B**: [tên + URL]
+Mỗi function phải có docstring và 1 unit test với pytest.
+Giữ nguyên logic và behavior. Code phải chạy được trên Python 3.10+.
+
+[Dán nguyên function process_user_order ~50 dòng vào đây]
+```
+
+**Code mẫu** sẽ chuẩn bị trước buổi test (1 function ~50 dòng có lồng if/else, ít typing hints, mix concerns: validation + business logic + DB write).
+
+**Ngành chọn**: **B — Lập trình**
+
+**Sản phẩm A**: **Cursor** — <https://www.cursor.com>  (Pro plan $20/tháng — dùng 14-day Pro Trial)
+**Sản phẩm B**: **GitHub Copilot** — <https://github.com/features/copilot>  (Pro plan $10/tháng — dùng gói student xác minh hoặc 30-day free trial)
+
+Cả 2 đều dùng phiên bản trả phí cá nhân (Pro tier) để so sánh fair — không dùng Enterprise.
 
 ---
 
 ## Phân chia screenshot
 
-- Sản phẩm A → [Mã học viên nào phụ trách chụp]
-- Sản phẩm B → [Mã học viên nào phụ trách chụp]
+- **Sản phẩm A (Cursor)** → Nguyễn Tiến Dũng phụ trách (chạy trên máy của Dũng, đăng nhập tài khoản Pro Trial).
+- **Sản phẩm B (GitHub Copilot)** → Ngô Hải Văn phụ trách (chạy trên VS Code có sẵn, đăng nhập tài khoản student).
+
+Mỗi người chụp ≥ 3 ảnh bắt buộc + 3 ảnh khuyến khích, đặt tên theo quy ước `product-[A|B]-[số]-[mô tả].png`.
 
 ---
 
 ## Ghi chú
 
-- Mỗi thành viên copy folder `02-product-comparison/` (đã hoàn thiện) vào repo cá nhân của mình.
-- Slide deck `analysis-report.pdf` và `analysis-report-link.md` (nếu có) là sản phẩm chung — 2 thành viên cùng tên trong credits của slide deck.
-- File `group-members.md` này phải giống nhau ở cả 2 repo cá nhân (cùng nội dung, cùng 2 mã học viên).
+- Mỗi thành viên copy folder `02-product-comparison/` (đã hoàn thiện) vào repo cá nhân của mình (`Day26-2A202600386` và `Day26-2A202600219`).
+- Slide deck `analysis-report.pdf` và `analysis-report-link.md` là sản phẩm chung — 2 thành viên cùng tên trong credits.
+- File `group-members.md` này phải giống nhau ở cả 2 repo cá nhân.
 
 ---
 
 ## Cấu trúc Analysis Report — S5 mở rộng
 
-Slide deck Analysis Report có 5 mục bắt buộc (S1 → S5). Mục S5 (Product Judgment) được mở rộng thành 8 mục con để bám sát 5 chiều phân tích định lượng (user base, tăng trưởng, doanh thu, moat, data flywheel) đã làm ở Lab 1 Phần B.
+Slide deck Analysis Report có 5 mục bắt buộc (S1 → S5). Mục S5 mở rộng thành 8 mục con:
 
-- **S5.1 Verdict** — mỗi sản phẩm xếp loại Strong / Promising / Weak / At Risk, kèm lý do 1 câu.
-- **S5.2 User base + tăng trưởng** — số liệu công khai (MAU, DAU, paid users, growth rate) cho cả 2 sản phẩm + nguồn.
-- **S5.3 Doanh thu / pricing power** — mức giá so với value cung cấp; ARR/MRR nếu công khai; pricing strategy (freemium, premium, enterprise).
-- **S5.4 Moat phân tích** — đánh giá 5 loại moat (data / network / switching cost / brand / distribution) cho từng sản phẩm; moat nào mạnh, moat nào dễ bị copy.
-- **S5.5 Data flywheel + feedback loop** — hành động người dùng nào feed lại model; loop có compounding không; sản phẩm có thu thập feedback systematically.
-- **S5.6 Niche Down + AI Feature Map** — sản phẩm có niche rõ không; map User Value / User Alignment / Business Value cho từng sản phẩm.
-- **S5.7 Spark → Loop → System** — mỗi sản phẩm đang ở giai đoạn nào; dự báo 12 tháng tới.
-- **S5.8 Liên hệ Lab 1 case** — 2 sản phẩm có rủi ro disruption-style tương tự case Lab 1 không; bài học rút từ Lab 1 áp dụng được gì?
+- **S5.1 Verdict** — Strong / Promising / Weak / At Risk + lý do 1 câu.
+- **S5.2 User base + tăng trưởng** — MAU, DAU, paid users, growth rate + nguồn.
+- **S5.3 Doanh thu / pricing power** — ARR/MRR; pricing strategy.
+- **S5.4 Moat phân tích** — 5 loại moat (data / network / switching / brand / distribution).
+- **S5.5 Data flywheel + feedback loop** — hành động user → model; compounding.
+- **S5.6 Niche Down + AI Feature Map** — User Value / Alignment / Business Value.
+- **S5.7 Spark → Loop → System** — giai đoạn nào; dự báo 12 tháng.
+- **S5.8 Liên hệ Lab 1 case** — rủi ro disruption-style; bài học áp dụng được.
 
-Nhóm bắt buộc xong S5.1, S5.6, S5.7, S5.8 (giữ nguyên yêu cầu cốt lõi như bản gốc). S5.2–S5.5 là phần mở rộng cho yêu cầu phân tích sâu — nhóm khá phải hoàn thành đủ; nhóm Đạt có thể chấp nhận ghi "không có nguồn công khai" cho 1-2 số liệu, miễn có ghi rõ.
+Nhóm bắt buộc xong S5.1, S5.6, S5.7, S5.8. S5.2–S5.5 là phần mở rộng để đạt nhóm Khá.
