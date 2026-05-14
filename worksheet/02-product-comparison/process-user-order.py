@@ -8,6 +8,8 @@ yêu cầu AI refactor thành 3 function:
   3) save_order_to_db(db_conn, user_email, totals, items)
 
 Yêu cầu: type hints + docstring + 1 pytest test/function. Giữ nguyên logic.
+
+Output của Antigravity (bản refactor) lưu tại process-user-order-antigravity-output.py.
 """
 import sqlite3
 from datetime import datetime
