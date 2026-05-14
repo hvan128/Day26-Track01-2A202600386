@@ -13,8 +13,8 @@ nop-cuoi: Có — bắt buộc (nộp kèm analysis-report.pdf)
 
 | # | Mã học viên | Họ tên đầy đủ | Phân công chính |
 |---|---|---|---|
-| 1 | 2A202600386 | Ngô Hải Văn | Test + screenshot **GitHub Copilot**; viết S2 Workflow + S5.4 Moat + S5.5 Data flywheel |
-| 2 | 2A202600219 | Nguyễn Tiến Dũng | Test + screenshot **Cursor**; viết S3 Output & Trust + S5.6 Niche + AI Feature Map + S5.7 Spark→Loop→System |
+| 1 | 2A202600386 | Ngô Hải Văn | Test + screenshot **Cursor**; viết S2 Workflow + S5.4 Moat + S5.5 Data flywheel |
+| 2 | 2A202600219 | Nguyễn Tiến Dũng | Test + screenshot **GitHub Copilot**; viết S3 Output & Trust + S5.6 Niche + AI Feature Map + S5.7 Spark→Loop→System |
 
 Phân công chung (cả 2): chốt nhiệm vụ + prompt, dựng S1 Product Moment, S4 Business Signal, S5.1 Verdict, S5.2/S5.3 số liệu, S5.8 Liên hệ Lab 1.
 
@@ -38,7 +38,7 @@ Giữ nguyên logic và behavior. Code phải chạy được trên Python 3.10+
 [Dán nguyên function process_user_order ~50 dòng vào đây]
 ```
 
-**Code mẫu** sẽ chuẩn bị trước buổi test (1 function ~50 dòng có lồng if/else, ít typing hints, mix concerns: validation + business logic + DB write).
+**Code mẫu**: xem file [`process-user-order.py`](./process-user-order.py) trong folder này — function ~55 dòng mix 3 concerns (validation + tax calculation + DB write), không type hints, lồng if/else. Cả 2 thành viên paste y hệt file này vào prompt của Cursor/Copilot.
 
 **Ngành chọn**: **B — Lập trình**
 
@@ -51,8 +51,8 @@ Cả 2 đều dùng phiên bản trả phí cá nhân (Pro tier) để so sánh 
 
 ## Phân chia screenshot
 
-- **Sản phẩm A (Cursor)** → Nguyễn Tiến Dũng phụ trách (chạy trên máy của Dũng, đăng nhập tài khoản Pro Trial).
-- **Sản phẩm B (GitHub Copilot)** → Ngô Hải Văn phụ trách (chạy trên VS Code có sẵn, đăng nhập tài khoản student).
+- **Sản phẩm A (Cursor)** → Ngô Hải Văn phụ trách (chạy trên máy của Văn, đăng nhập tài khoản Pro Trial).
+- **Sản phẩm B (GitHub Copilot)** → Nguyễn Tiến Dũng phụ trách (chạy trên VS Code, đăng nhập tài khoản student hoặc 30-day trial).
 
 Mỗi người chụp ≥ 3 ảnh bắt buộc + 3 ảnh khuyến khích, đặt tên theo quy ước `product-[A|B]-[số]-[mô tả].png`.
 
